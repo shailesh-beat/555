@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Simran ❤️</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    font-family:'Segoe UI',sans-serif;
+    background:linear-gradient(135deg,#ff6a88,#ff99ac);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    color:white;
+}
+.card{
+    background:rgba(255,255,255,0.2);
+    backdrop-filter:blur(12px);
+    padding:30px;
+    border-radius:25px;
+    width:350px;
+    text-align:center;
+    box-shadow:0 25px 50px rgba(0,0,0,0.3);
+    z-index:2;
+}
+h1{font-size:2.2em;margin-bottom:10px;}
+p{font-size:1.05em;line-height:1.5;}
+
+img{
+    width:100%;
+    border-radius:18px;
+    margin:15px 0;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:30px;
+    font-size:1em;
+    cursor:pointer;
+    margin:8px;
+    transition:.3s;
+}
+button:hover{transform:scale(1.1);}
+.yes{background:white;color:#ff4f7a;}
+.no{background:transparent;color:white;border:1px solid white;}
+
+#result{display:none;margin-top:15px;font-size:1.1em}
+
+/* Floating hearts */
+.heart{
+    position:absolute;
+    bottom:-20px;
+    animation:float 6s linear infinite;
+}
+@keyframes float{
+    0%{transform:translateY(0);opacity:1;}
+    100%{transform:translateY(-100vh);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Background Music -->
+<audio autoplay loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">
+</audio>
+
+<div class="card">
+
+<h1>Hey Simran ❤️</h1>
+
+<p>
+Tumhari smile kuch alag hi baat hai ✨<br>
+Dil automatically happy ho jata hai.
+</p>
+
+<!-- ✅ CORRECT IMAGE PATH -->
+<img id="photo" src="images1/simran.jpeg" alt="Simran">
+
+<p id="countdown"></p>
+
+<h3>Will you go out with me? 💕</h3>
+
+<button class="yes" onclick="yes()">Yes 😊</button>
+<button class="no" onclick="no()">No 🙈</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+// ✅ Photo slideshow (CORRECT PATHS)
+let photos = [
+  "images1/simran.jpeg",
+  "images1/IMG-20250905-WA0003.jpg"
+];
+
+let i = 0;
+setInterval(()=>{
+    i = (i+1) % photos.length;
+    document.getElementById("photo").src = photos[i];
+},2500);
+
+// 🎂 Birthday countdown (Nov 17, 2026)
+let target = new Date("2026-11-17");
+setInterval(()=>{
+    let now = new Date();
+    let diff = target - now;
+    let days = Math.floor(diff / (1000*60*60*24));
+    document.getElementById("countdown").innerHTML =
+    "Counting days till Simran’s special day 🎂❤️<br>" + days + " days left";
+},1000);
+
+// ❤️ Buttons
+function yes(){
+    result.style.display="block";
+    result.innerHTML="You just made my heart very happy ❤️✨";
+}
+function no(){
+    result.style.display="block";
+    result.innerHTML="It’s okay… beautiful things take time 🌸";
+}
+
+// 💕 Floating hearts
+setInterval(()=>{
+    let h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML="❤️";
+    h.style.left=Math.random()*100+"vw";
+    h.style.fontSize=(Math.random()*20+15)+"px";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),6000);
+},300);
+</script>
+
+</body>
+</html>
